@@ -213,6 +213,7 @@ if __name__ == '__main__':
     tgt_sents = read_corpus(args['--train-tgt'], source='tgt')
 
     vocab = Vocab.build(src_sents, tgt_sents, int(args['--size']), int(args['--freq-cutoff']))
+
     print('generated vocabulary, source %d words, target %d words' % (len(vocab.src), len(vocab.tgt)))
 
     vocab.save(args['VOCAB_FILE'])

@@ -56,7 +56,11 @@ class ModelEmbeddings(nn.Module):
         ###     Embedding Layer:
         ###         https://pytorch.org/docs/stable/nn.html#torch.nn.Embedding
         """
-        wordembedding过程，编码维度为embedding_dim，padding_idx表示输出遇到此下标时用0填充。
+        现在都是端到端的训练数据，那么词向量怎么得到，就是这个部分，通过一个字典，
+        len(vocab.src)：字典里有多少词，
+        embedding_dim：词向量的维度，
+        padding_idx：padding_idx
+        vocab的详情可以看vocab.py
         """
         self.source = nn.Embedding(
             len(vocab.src),

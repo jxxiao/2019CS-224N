@@ -8,6 +8,12 @@ Pencheng Yin <pcyin@cs.cmu.edu>
 Sahil Chopra <schopra8@stanford.edu>
 """
 
+"""
+这个模块有三个功能，
+pad_sents：统一句子长度。
+read_corpus：读取语料库，把一句话存到一个list中去。
+batch_iter：以(key,value)保存数据，决定我们一次算多少个数据。不了解的去看下SGD，BGD就好，这里用的是BGD。
+"""
 import math
 from typing import List
 
@@ -18,7 +24,7 @@ import torch.nn.functional as F
 
 
 
-# 这个函数的目的是统一所有句子长度，末尾补pad_token
+# 这个函数的目的是统一所有句子长度，先找出最长的句子长度，之后在长度不够的句子末尾补pad_token。
 def pad_sents(sents, pad_token):
     """ Pad list of sentences according to the longest sentence in the batch.
     @param sents (list[list[str]]): list of sentences, where each sentence
